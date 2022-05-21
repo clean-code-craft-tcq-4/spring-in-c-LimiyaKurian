@@ -2,6 +2,7 @@
 
 #include "catch.hpp"
 #include "stats.h"
+#include "alerter.h"
 
 #include <stdlib.h>
 #include <math.h>
@@ -17,11 +18,16 @@ TEST_CASE("reports average, minimum and maximum") {
 }
 
 TEST_CASE("average is NaN for empty array") {
-    Stats computedStats = compute_statistics(0, 0);
+    float numberset[] = {};
+    struct Stats computedStats = compute_statistics(numberset, 0);
+    
     //All fields of computedStats (average, max, min) must be
     //NAN (not-a-number), as defined in math.h
     
     //Design the REQUIRE statement here.
+    REQUIRE(computedStats.average != computedStats.average);
+    REQUIRE(computedStats.min != computedStats.min);
+    REQUIRE(computedStats.max != computedStats.max);
     //Use https://stackoverflow.com/questions/1923837/how-to-use-nan-and-inf-in-c
 }
 
