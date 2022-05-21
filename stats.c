@@ -20,11 +20,10 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
             {
                 s.min = numberset[i];
             }
-            sum += number[i];
+            sum += numberset[i];
         }
         
         s.average = sum/(float)setlength;
-        return s;
     }
     
     else
@@ -33,6 +32,8 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
         s.min += s.average;
         s.max += s.average;
     }
+    
+    return s;
 }
 
 int emailAlertCallCount = 0;
